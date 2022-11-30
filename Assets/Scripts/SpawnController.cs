@@ -7,6 +7,7 @@ public class SpawnController : MonoBehaviour
    [SerializeField] private GameController _gc;
     private bool _canSpawn = true;
    [SerializeField] GameObject CurrentSpawn;
+    private float _spawnPointCooldown = 0.1f;
     void Start()
     {
       _gc = GameController.Instance;
@@ -35,9 +36,9 @@ public class SpawnController : MonoBehaviour
     {
         SpriteRenderer sr = CurrentSpawn.GetComponent<SpriteRenderer>();
         Sequence seq = DOTween.Sequence();
-        seq.Append(sr.DOFade(0.3f, 0.1f));
+        seq.Append(sr.DOFade(0.3f, _spawnPointCooldown));
         seq.AppendInterval(0.3f);
-        seq.Append(sr.DOFade(0.5f, 0.1f));
+        seq.Append(sr.DOFade(0.5f, _spawnPointCooldown));
         seq.AppendCallback(() => _canSpawn = true);
 
     }

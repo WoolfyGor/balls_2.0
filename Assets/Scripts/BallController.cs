@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour
     public bool _spawner = true;
     private bool evolvable = true;
     [SerializeField] SpriteRenderer _sr;
+    private float _shrinkTime = 0.1f;
     private void Awake()
     {
         transform.localScale = Vector2.zero;
@@ -26,8 +27,8 @@ public class BallController : MonoBehaviour
     private void ShrinkOut() 
     {
         float multipler = (float)_tier / 10f;
-        transform.DOScale(new Vector3(1 + multipler, 1 + multipler, 1 + multipler), 0.1f);
-    }
+        transform.DOScale(new Vector3(1 + multipler, 1 + multipler, 1 + multipler), _shrinkTime);
+    }   
     public void ShrinkIn(bool mustDestroy = false)
     {
         Sequence seq = DOTween.Sequence();
@@ -35,7 +36,7 @@ public class BallController : MonoBehaviour
         gameObject.TryGetComponent<Rigidbody2D>(out rb);
         if(rb!=null)
             seq.InsertCallback(0,() => Destroy(rb));
-        seq.Append(transform.DOScale(Vector3.zero, 0.05f));
+        seq.Append(transform.DOScale(Vector3.zero, _shrinkTime/2));
         if (mustDestroy)
             seq.AppendCallback(() => Destroy(gameObject));
     }
