@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\ArenaController.cs" />
     <Compile Include="Assets\Scripts\EvolutionController.cs" />
     <Compile Include="Assets\Scripts\BallController.cs" />
+    <Compile Include="Assets\Scripts\ScoreboardController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
