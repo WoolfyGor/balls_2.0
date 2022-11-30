@@ -23,4 +23,9 @@ public class GameController : MonoBehaviour
             obj.GetComponent<BallController>()._tier = startTier+1;
         }
     }
+    
+    public void TriggerGameOver()
+    {
+        Debug.LogWarning("Lose");
+    }
 }

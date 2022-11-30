@@ -11,12 +11,14 @@ public class BallController : MonoBehaviour
     private bool evolvable = true;
     [SerializeField] SpriteRenderer _sr;
     private float _shrinkTime = 0.1f;
+    private GameController _gc;
     private void Awake()
     {
         transform.localScale = Vector2.zero;
     }
     private void Start()
     {
+        _gc = GameController.Instance;
         if(_tier==0)
             RandomTier();
         SetScore(_tier);
@@ -71,11 +73,13 @@ public class BallController : MonoBehaviour
                 colorToSet = Color.yellow;
                 break;
             case 6:
-              
+                colorToSet = Color.blue;
                 break;
             case 7:
+                colorToSet = Color.red;
                 break;
             case 8:
+                colorToSet = Color.cyan;
                 break;
             default:
                 colorToSet = Color.black;
@@ -86,18 +90,30 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        CheckGameOver(collision);
+        CheckEvolution(collision);
+    }
+    
+    private void CheckEvolution(Collision2D collision)
+    {
         BallController _bc;
         collision.transform.TryGetComponent<BallController>(out _bc);
-        if (collision.transform.CompareTag("Ball")&& _bc!=null)
+        if (collision.transform.CompareTag("Ball") && _bc != null)
         {
             if (!_spawner)
                 return;
-            if(_bc._tier == _tier) 
+            if (_bc._tier == _tier)
             {
                 _bc._spawner = false;
                 EvolutionController.Instance.PerformEvolution(this, collision.gameObject.GetComponent<BallController>());
             }
         }
+    }
+    private void CheckGameOver(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("DeathZone")){
+            _gc.TriggerGameOver();
+        } 
     }
 }
 
