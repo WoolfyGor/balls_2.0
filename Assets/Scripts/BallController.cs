@@ -27,7 +27,7 @@ public class BallController : MonoBehaviour
     private void ShrinkOut() 
     {
         float multipler = (float)_tier / 10f;
-        transform.DOScale(new Vector3(1 + multipler, 1 + multipler, 1 + multipler), _shrinkTime);
+        transform.DOScale(new Vector3(1 + multipler*2, 1 + multipler * 2, 1 + multipler * 2), _shrinkTime);
     }   
     public void ShrinkIn(bool mustDestroy = false)
     {
