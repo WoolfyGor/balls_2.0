@@ -57,13 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SpawnController.cs" />
+    <Compile Include="Assets\SkinsData\SkinData.cs" />
+    <Compile Include="Assets\Scripts\ScoreboardController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\ArenaSelectController.cs" />
     <Compile Include="Assets\Scripts\ArenaController.cs" />
+    <Compile Include="Assets\Scripts\CameraNavigationController.cs" />
     <Compile Include="Assets\Scripts\EvolutionController.cs" />
     <Compile Include="Assets\Scripts\BallController.cs" />
-    <Compile Include="Assets\Scripts\ScoreboardController.cs" />
-    <Compile Include="Assets\Scripts\CameraNavigationController.cs" />
-    <Compile Include="Assets\Scripts\ArenaSelectController.cs" />
+    <Compile Include="Assets\SkinPreview.cs" />
+    <Compile Include="Assets\SkinSelectController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -728,6 +731,12 @@
     <Reference Include="Unity.2D.IK.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Triangle.Editor.dll</HintPath>
     </Reference>
@@ -754,12 +763,6 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

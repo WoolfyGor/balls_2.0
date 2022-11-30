@@ -25,6 +25,10 @@ public class CameraNavigationController : MonoBehaviour
     {
         _gc.StartGame();
     }
+    public void MoveToSkinSelect()
+    {
+        MainCameraWaypoint.transform.DOMove(SkinSelectWaypoint.transform.position, 1f);
+    }
     public void MoveToPlayZone()
     {
         MainCameraWaypoint.transform.DOMove(PlayzoneWaypoint.transform.position, 1f);
