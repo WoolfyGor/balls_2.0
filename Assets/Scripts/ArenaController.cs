@@ -5,17 +5,29 @@ using UnityEngine;
 
 public class ArenaController : MonoBehaviour
 {
+    public static ArenaController Instance;
     [SerializeField] private GameObject[] Arenas;
     public GameObject CurrentActiveArena;
     [SerializeField] private GameObject ArenaShape;
     SpawnController _sc;
-    // Start is called before the first frame update
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            return;
+    }
+
     void Start()
     {
         _sc = SpawnController.Instance;
+       
+    }
+    public void SetRandomArena()
+    {
         SetArenaAsActive(SelectRandomArena());
     }
-
     public GameObject SelectRandomArena()
     {
 
