@@ -4,10 +4,19 @@ using UnityEngine;
 using DG.Tweening;
 public class SpawnController : MonoBehaviour
 {
+    public static SpawnController Instance;
    [SerializeField] private GameController _gc;
     private bool _canSpawn = true;
-   [SerializeField] GameObject CurrentSpawn;
+   [SerializeField] public GameObject CurrentSpawn;
     private float _spawnPointCooldown = 0.1f;
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            return;
+    }
     void Start()
     {
       _gc = GameController.Instance;
